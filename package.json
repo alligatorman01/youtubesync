@@ -1,0 +1,20 @@
+{
+  "name": "youtube-view-sync",
+  "version": "1.0.0",
+  "description": "Sync YouTube view counts to Notion database",
+  "main": "index.js",
+  "scripts": {
+    "start": "node webhook-server.js",
+    "dev": "node webhook-server.js",
+    "sync": "node index.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.6",
+    "axios": "^1.4.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "googleapis": "^120.0.0",
+    "open": "^10.1.0",
+    "url": "^0.11.1"
+  }
+}
