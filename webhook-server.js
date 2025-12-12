@@ -57,6 +57,16 @@ app.get('/trigger', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
-  console.log(`📍 Webhook endpoint: http://localhost:${PORT}/webhook`);
-  console.log(`🔧 Manual trigger: http://localhost:${PORT}/trigger`);
+  
+  // Check if running on Railway or locally
+  const isRailway = process.env.RAILWAY_ENVIRONMENT || process.env.RAILWAY_PUBLIC_DOMAIN;
+  const publicDomain = process.env.RAILWAY_PUBLIC_DOMAIN;
+  
+  if (isRailway && publicDomain) {
+    console.log(`📍 Webhook endpoint: https://${publicDomain}/webhook`);
+    console.log(`🔧 Manual trigger: https://${publicDomain}/trigger`);
+  } else {
+    console.log(`📍 Webhook endpoint: http://localhost:${PORT}/webhook`);
+    console.log(`🔧 Manual trigger: http://localhost:${PORT}/trigger`);
+  }
 });
